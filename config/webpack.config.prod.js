@@ -263,7 +263,15 @@ module.exports = {
             test: /\.less$/,
             use: [
               require.resolve('style-loader'),
-              require.resolve('css-loader'),
+              {
+                loader: "css-loader",
+                options: {
+                  sourceMap: true,
+                  modules: true,
+                  importLoaders: 3,
+                  localIdentName: "[local]___[hash:base64:5]"
+                }
+              },
               {
                 loader: require.resolve('less-loader'),
                 options: {

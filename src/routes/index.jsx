@@ -8,16 +8,16 @@ import stores from 'stores'
 
 import Home from 'routes/home'
 import About from 'routes/about'
+import Login from 'routes/login'
 
 const Routes = () => (
   <HashRouter>
-    <div>
+    <Switch>
       <Route exact path="/" render={() => <Redirect to="/home" />} />
-      <Switch>
-        <Route path="/home" component={Home} />
-        <Route path="/about" component={About} />
-      </Switch>
-    </div>
+      <Route path="/login" component={Login} />
+      <Route path="/home" component={Home} />
+      <Route path="/about" component={About} />
+    </Switch>
   </HashRouter>
 )
 

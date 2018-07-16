@@ -228,9 +228,30 @@ module.exports = {
           },
           {
             test: /\.less$/,
+            include: paths.appSrc,
             use: [
               require.resolve('style-loader'),
-              require.resolve('css-loader'),
+              {
+                loader: "css-loader",
+                options: {
+                  sourceMap: true,
+                  modules: true,
+                  importLoaders: 3,
+                  localIdentName: "[local]___[hash:base64:5]"
+                }
+              },
+              {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                  ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
+                  plugins: () => [
+                    require('postcss-flexbugs-fixes'),
+                    autoprefixer({
+                      flexbox: 'no-2009',
+                    }),
+                  ],
+                },
+              },
               {
                 loader: require.resolve('less-loader'),
                 options: {
