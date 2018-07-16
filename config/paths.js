@@ -50,6 +50,8 @@ module.exports = {
   appStyles: resolveApp('src/styles'),
   appRoutes: resolveApp('src/routes'),
   appComponents: resolveApp('src/components'),
+  appCommon: resolveApp('src/common'),
+  appLayouts: resolveApp('src/layouts'),
   appStores: resolveApp('src/stores'),
   appUtils: resolveApp('src/utils'),
   yarnLockFile: resolveApp('yarn.lock'),

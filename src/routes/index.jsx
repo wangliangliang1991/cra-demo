@@ -4,10 +4,11 @@ import { HashRouter, Switch } from 'react-router-dom'
 import DevTools from 'mobx-react-devtools'
 import { Provider } from 'mobx-react'
 
+// import 'styles/index.less'
+
 import stores from 'stores'
 
-import Home from 'routes/home'
-import About from 'routes/about'
+import BasicLayout from 'layouts/basicLayout'
 import Login from 'routes/login'
 
 const Routes = () => (
@@ -15,8 +16,7 @@ const Routes = () => (
     <Switch>
       <Route exact path="/" render={() => <Redirect to="/home" />} />
       <Route path="/login" component={Login} />
-      <Route path="/home" component={Home} />
-      <Route path="/about" component={About} />
+      <BasicLayout />
     </Switch>
   </HashRouter>
 )

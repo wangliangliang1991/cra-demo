@@ -93,6 +93,8 @@ module.exports = {
 		  styles: paths.appStyles,
 		  routes: paths.appRoutes,
 		  components: paths.appComponents,
+      common: paths.appCommon,
+      layouts: paths.appLayouts,
       stores: paths.appStores,
 		  utils: paths.appUtils,
       // Support React Native Web
@@ -219,48 +221,8 @@ module.exports = {
             // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
           },
           {
-            test : /\.scss$/,
-            use  : ExtractTextPlugin.extract(
-              Object.assign(
-                {
-                  fallback: require.resolve('style-loader'),
-                  use: [
-                    {
-                      loader: require.resolve('css-loader'), // translates CSS into CommonJS
-                      options: {
-                        sourceMap     : true,
-                        minimize      : true,
-                        importLoaders : 3,
-                      },
-                    },
-                    require.resolve('resolve-url-loader'), // resolves relative paths in url() statements based on the original source file
-                    {
-                      loader: require.resolve('postcss-loader'),
-                      options: {
-                        ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-                        plugins: () => [
-                          require('postcss-flexbugs-fixes'),
-                          autoprefixer({
-                            flexbox: 'no-2009',
-                          }),
-                        ],
-                      },
-                    },
-    
-                    {
-                      loader: require.resolve('sass-loader'),  // compiles Sass to CSS,
-                      options: {
-                        includePaths: [`${paths.appNodeModules}/normalize-scss/sass`],
-                      },
-                    },
-                  ]
-                },
-                extractTextPluginOptions
-              )
-            ),
-          },
-          {
             test: /\.less$/,
+            include: paths.appSrc,
             use: [
               require.resolve('style-loader'),
               {
@@ -272,6 +234,15 @@ module.exports = {
                   localIdentName: "[local]___[hash:base64:5]"
                 }
               },
+              require.resolve('less-loader'),
+            ],
+          },
+          {
+            test: /\.less$/,
+            exclude: paths.appSrc,
+            use: [
+              require.resolve('style-loader'),
+              require.resolve('css-loader'),
               {
                 loader: require.resolve('less-loader'),
                 options: {
