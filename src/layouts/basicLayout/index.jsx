@@ -36,9 +36,9 @@ class BasicLayout extends Component {
           collapsed={collapsed}
           menuData={getMenuData()}
         />
-        <Layout className="main">
+        <Layout className={styles.main}>
           <Header collapsed={collapsed} onClick={this.handleToggle} />
-          <Content className="content">
+          <Content className={styles.content}>
             <Switch>
               {
                 getRoutes(path, routerData).map(item => (
