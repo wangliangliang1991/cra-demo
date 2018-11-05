@@ -10,8 +10,6 @@ import LoginWithMobilePhone from './loginWithMobilePhone'
 
 import styles from './style.less'
 
-// const { TabPane } = Tabs
-
 const cx = classnames.bind(styles)
 const FormItem = Form.Item
 

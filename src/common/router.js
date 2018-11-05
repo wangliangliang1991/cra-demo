@@ -1,9 +1,13 @@
 import Home from 'routes/home'
 import About from 'routes/about'
+import Analysis from 'routes/analysis'
 import { getMenuData } from './menu'
 
 export const routerConfig = {
   '/home/analysis': {
+    component: Analysis,
+  },
+  '/home/monitor': {
     component: Home,
   },
   '/form/basic-form': {

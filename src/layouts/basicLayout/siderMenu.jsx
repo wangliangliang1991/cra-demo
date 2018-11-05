@@ -64,15 +64,6 @@ class SiderMenu extends Component {
     }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   const { location } = this.props
-  //   if (nextProps.location.pathname !== location.pathname) {
-  //     this.setState({
-  //       openKeys: this.getDefaultCollapsedSubMenus(nextProps),
-  //     })
-  //   }
-  // }
-
   /**
    * Convert pathname to openKeys
    * /list/search/articles = > ['list','/list/search']

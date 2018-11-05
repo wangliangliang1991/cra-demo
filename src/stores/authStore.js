@@ -11,7 +11,6 @@ class AuthStore {
 
       return Promise.resolve()
     } catch (error) {
-      console.log(error)
       return Handler.requestError(error)
     }
   })
